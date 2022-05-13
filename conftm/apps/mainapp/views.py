@@ -39,7 +39,7 @@ class Authenticate(View):
         if user != None:
             if int(self.kwargs['type']) == 0:
                 login(request, user)
-                return HttpResponse("http://127.0.0.1:8000/", status=200)
+                return HttpResponse("https://conftm.herokuapp.com/", status=200)
             else:
                 logout(request)
                 return HttpResponse(status=200)
@@ -101,7 +101,7 @@ class App(View):
             return HttpResponse(status=400)
 
 
-@method_decorator(login_required(login_url="http://127.0.0.1:8000/InOut/0"), name="dispatch")
+@method_decorator(login_required(login_url="https://conftm.herokuapp.com/InOut/0"), name="dispatch")
 class Adminpannel(View):
     def get(self, request, *args, **kwargs):
         app = {}

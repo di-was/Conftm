@@ -16,7 +16,7 @@ class Apps(models.Model):
     parent = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     AccessToken = models.CharField(max_length=10000, blank=False, null=False)
     pageId = models.IntegerField(unique=True)
-    url = models.URLField(default="https://127.0.0.1:8000/")
+    url = models.URLField(default="https://conftm.herokuapp.com/")
     def __str__(self):
         return self.name
 
