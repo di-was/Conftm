@@ -131,3 +131,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "conftm/static"),
 ]
 STATIC_ROOT = BASE_DIR / 'static'
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_HTTPONLY = False
+SESSION_COOKIE_SECURE = False
