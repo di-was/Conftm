@@ -130,7 +130,7 @@ class Viewing(View):
         Idapp = app.pageId
         confessionid = Confessions.objects.get(id=ast.literal_eval(request.body.decode())['id'])
         graph = facebook.GraphAPI(access_token=access_token)
-        graph.put_object(parent_object=Idapp, connection_name="feed", message=confessionid.content)
+        graph.put_object(parent_object=Idapp, connection_name="feed", message= f"Confession #{confessionid}  " + confessionid.content)
         print(ast.literal_eval(request.body.decode()))
         confessedObject = Confessed(content=confessionid.content)
         confessionid.delete()
