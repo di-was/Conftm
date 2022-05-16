@@ -1,0 +1,11 @@
+.display-3 {
+    margin-top : 30px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+div .nav-link {
+    cursor: pointer;
+    border-radius: 5px;
+    max-width: 100px;
+}
