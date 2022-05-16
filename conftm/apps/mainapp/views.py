@@ -18,7 +18,7 @@ import facebook
 # Create your views here.
 
 
-
+@method_decorator(csrf_exempt, name='dispatch')
 class Authenticate(View):
 
     def get(self, request, *args, **kwargs):
