@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3o8c0+_jxwzvk@o)nz@5$ece+xz^$=%+50=+h9nn1v(2+p&zy6'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['conftm.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['conftm.herokuapp.com', 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -129,3 +130,4 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "conftm/templates"),
     os.path.join(BASE_DIR, "conftm/static"),
 ]
+STATIC_ROOT = BASE_DIR / 'static'
