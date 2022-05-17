@@ -48,10 +48,12 @@ class Authenticate(View):
 class UserCreation(View):
 
     def get(self, request, *args, **kwargs):
-        form = UserForm()
-        return render(request, "register.html", {"form": form})
+        form1 = UserForm()
+        return render(request, "register.html", {"form": form1})
 
     def post(self, request, *args, **kwargs):
+
+
 
         userform = UserForm(ast.literal_eval(request.body.decode()))
         if userform.is_valid():
