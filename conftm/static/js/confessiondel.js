@@ -1,6 +1,6 @@
 let trash = document.querySelectorAll(".fa-trash");
 let deleteb = document.querySelector(".delete-b");
-let post = document.querySelector(".fa-check");
+let post = document.querySelectorAll(".fa-check");
 
 function getCookie(name) {
     var cookieValue = null;
@@ -63,11 +63,13 @@ deleteb.addEventListener("click", (e) => {
     xhr.send(JSON.stringify("ok"));
 })
 
-post.addEventListener("click", (e) => {
+post.forEach(element => () {
+
+    element.addEventListener("click", (e) => {
     let url = window.location  + 'pso/'
     let token = getCookie('csrftoken')
-    element = document.querySelector(".fa-check")
-    data = {"id": element.parentNode.parentNode.parentNode.parentNode.parentNode.children[1].children[0].children[0].children[0].children[0].innerText}
+    htmlelement = document.querySelector(".fa-check")
+    data = {"id": htmlelement.parentNode.parentNode.parentNode.parentNode.parentNode.children[1].children[0].children[0].children[0].children[0].innerText}
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     console.log(data)
@@ -77,10 +79,11 @@ post.addEventListener("click", (e) => {
     xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
     if (xhr.status == 200) {
-         let target = element.parentNode.parentNode.parentNode.parentNode.parentNode
+         let target = htmlelement.parentNode.parentNode.parentNode.parentNode.parentNode
          target.remove()
     }
 }};
     xhr.send(JSON.stringify(data));
 
+})
 })

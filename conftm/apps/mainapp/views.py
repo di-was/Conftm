@@ -54,7 +54,6 @@ class UserCreation(View):
     def post(self, request, *args, **kwargs):
 
 
-
         userform = UserForm(ast.literal_eval(request.body.decode()))
         if userform.is_valid():
             print("TRue")
