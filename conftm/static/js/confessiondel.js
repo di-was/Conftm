@@ -63,7 +63,7 @@ deleteb.addEventListener("click", (e) => {
     xhr.send(JSON.stringify("ok"));
 })
 
-post.forEach(element => () {
+post.forEach(element =>  {
 
     element.addEventListener("click", (e) => {
     let url = window.location  + 'pso/'
