@@ -28,7 +28,7 @@ submitbutton.addEventListener("click", (e) => {
 
     let token = getCookie('csrftoken')
 
-    var url = "https://127.0.0.1:8000/app/creation/";
+    var url = "http://127.0.0.1:8000/app/creation/";
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
@@ -39,7 +39,7 @@ submitbutton.addEventListener("click", (e) => {
     xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
     if (xhr.status == 200) {
-        window.location = 'https://127.0.0.1:8000/';
+        window.location = 'http://127.0.0.1:8000/';
     }
 }};
     xhr.send(JSON.stringify(data));

@@ -23,7 +23,7 @@ trash.forEach(element => {
 
 element.addEventListener("click", (e) => {
     id = element.children[0].innerText;
-    var url = "https://127.0.0.1:8000/confession/delete/" + id + '/';
+    var url = "http://127.0.0.1:8000/confession/delete/" + id + '/';
     let token = getCookie('csrftoken')
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
@@ -57,7 +57,7 @@ deleteb.addEventListener("click", (e) => {
     xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
     if (xhr.status == 200) {
-         window.location = "https://127.0.0.1:8000/";
+         window.location = "http://127.0.0.1:8000/";
     }
 }};
     xhr.send(JSON.stringify("ok"));

@@ -26,7 +26,7 @@ submitLogin.addEventListener("click", (e) => {
 
     let token = getCookie('csrftoken')
 
-    var url = "https://127.0.0.1:8000/InOut/0";
+    var url = "http://127.0.0.1:8000/InOut/0";
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);

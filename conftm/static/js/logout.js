@@ -20,7 +20,7 @@ logout.addEventListener("click", (e) => {
     e.preventDefault()
     let token = getCookie('csrftoken')
 
-    var url = "https://127.0.0.1:8000/InOut/1";
+    var url = "http://127.0.0.1:8000/InOut/1";
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
@@ -30,7 +30,7 @@ logout.addEventListener("click", (e) => {
 
     xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
-        window.location = "https://127.0.0.1:8000/"
+        window.location = "http://127.0.0.1:8000/"
        }};
     xhr.send(JSON.stringify({"username": "ignore", "password": "ignore"}));
 })
