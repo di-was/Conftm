@@ -6,7 +6,7 @@ button.forEach(element => {
         parent = element.parentNode.parentNode
         pageId = parent.children[0].children[0].innerText;
         console.log(pageId)
-        window.location = "https://conftm.herokuapp.com/confession/view/" + pageId + "/"
+        window.location = "https://127.0.0.1:8000/confession/view/" + pageId + "/"
     })
 
 })

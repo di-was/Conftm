@@ -11,7 +11,7 @@ urlpatterns = [
     path('confession/view/<int:pageId>/', Viewing.as_view()), # use this to post confession/view/pageid/post/confid/
     path('confession/view/<int:pageId>/deleteAp/', deleteAp),
     path('confession/delete/<int:confessionid>/', deleteConf),
-    path('confession/view/<int:pageId>/add/', addconf),
+    path('confession/view/<int:pageId>/add/', addconf.as_view()),
     path('<int:pageId>/', addconf.as_view()),
     path('confession/view/<int:pageId>/pso/', Viewing.as_view())
 ]

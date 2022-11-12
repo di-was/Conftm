@@ -102,7 +102,7 @@ class App(View):
             return HttpResponse(status=400)
 
 
-@method_decorator(login_required(login_url="https://conftm.herokuapp.com/InOut/0"), name="dispatch")
+@method_decorator(login_required(login_url="https://127.0.0.1:8000/InOut/0"), name="dispatch")
 class Adminpannel(View):
     def get(self, request, *args, **kwargs):
         app = {}

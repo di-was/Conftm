@@ -27,7 +27,7 @@ signup.addEventListener("click", (e) => {
     data = {'username': name.value, 'password': password.value}
     let token = getCookie('csrftoken')
 
-    var url = "https://conftm.herokuapp.com/register/";
+    var url = "https://127.0.0.1:8000/register/";
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
@@ -38,7 +38,7 @@ signup.addEventListener("click", (e) => {
     xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
     if (xhr.status == 200) {
-        window.location = "https://conftm.herokuapp.com/InOut/0";
+        window.location = "https://127.0.0.1:8000/InOut/0";
     }
     console.log(xhr.responseText)
     console.log(xhr.status);
