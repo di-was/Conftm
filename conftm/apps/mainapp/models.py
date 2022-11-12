@@ -16,18 +16,21 @@ class Apps(models.Model):
     parent = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     AccessToken = models.CharField(max_length=10000, blank=False, null=False)
     pageId = models.IntegerField(unique=True)
-    url = models.URLField(default="https://conftm.herokuapp.com/")
+    url = models.URLField(default="http://127.0.0.1:8000/")
     def __str__(self):
         return self.name
 
     def info(self):
         dictionary = {"name": self.name, "url": self.url + str(self.pageId) + '/', "confessions": len(self.confessions_set.all()), "pageId": self.pageId}
         return dictionary
-
+class Tracker(models.Model):
+    pageContentId = models.IntegerField()
 
 class Confessions(models.Model):
     content = models.CharField(max_length=5000, blank=False, null=False)
     parent = models.ForeignKey(Apps, on_delete=models.CASCADE)
+
+    id = models.IntegerField(primary_key=True, blank=False, null=False)
 
     class Meta:
         ordering = ('-id',)

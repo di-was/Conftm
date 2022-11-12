@@ -39,7 +39,7 @@ class Authenticate(View):
         if user != None:
             if int(self.kwargs['type']) == 0:
                 login(request, user)
-                return HttpResponse("https://conftm.herokuapp.com/", status=200)
+                return HttpResponse("http://127.0.0.1:8000/", status=200)
             else:
                 logout(request)
                 return HttpResponse(status=200)
@@ -75,6 +75,8 @@ class Confession(View):
        data = ast.literal_eval(request.body.decode())
        parent = Apps.objects.get(pageId=int(self.kwargs['pageId']))
        data['parent'] = parent
+
+
        confessionform = ConfessionsForm(data)
        if confessionform.is_valid():
            confessionform.save()
@@ -116,6 +118,7 @@ class Viewing(View):
     def get(self, request, *args, **kwargs):
         apppageId = self.kwargs['pageId']
         if request.user == Apps.objects.get(pageId=apppageId).parent.user:
+
             confessionslist = Confessions.objects.all().filter(parent=Apps.objects.get(pageId=apppageId))
             data = {}
             for x in confessionslist:
@@ -130,12 +133,15 @@ class Viewing(View):
         access_token = app.AccessToken
         Idapp = app.pageId
         confessionid = Confessions.objects.get(id=ast.literal_eval(request.body.decode())['id'])
-        graph = facebook.GraphAPI(access_token=access_token)
-        graph.put_object(parent_object=Idapp, connection_name="feed", message= f"Confession #{ast.literal_eval(request.body.decode())['id']}  : " + confessionid.content)
-        print(ast.literal_eval(request.body.decode()))
+        graph = facebook.GraphAPI(access_token=access_token, version='2.7')
+        graph.put_object(parent_object='me', connection_name="feed", message= f"#{len(Tracker.objects.all())} \n" + "\n" + confessionid.content)
+
         confessedObject = Confessed(content=confessionid.content)
         confessionid.delete()
         confessedObject.save()
+        total = len(Tracker.objects.all())
+        a = Tracker(pageContentId=total + 1)
+        a.save()
         return HttpResponse(status=200)
 
 
@@ -175,6 +181,7 @@ class addconf(View):
         app = Apps.objects.get(pageId=int(self.kwargs['pageId']))
         data = ast.literal_eval(request.body.decode())
         data['parent'] = app
+        data['id'] = len(Confessions.objects.all()) + 1
         form = ConfessionsForm(data)
         if form.is_valid():
             form.save()

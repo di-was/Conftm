@@ -12,7 +12,7 @@ class UserForm(ModelForm):
 class ConfessionsForm(ModelForm):
     class Meta:
         model = Confessions
-        fields = ['content', 'parent']
+        fields = ['content', 'parent', 'id']
 
 
 class Appform(ModelForm):
